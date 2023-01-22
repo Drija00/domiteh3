@@ -26,6 +26,7 @@ const Navbar = () => {
     setOrderType(category);
 }
 
+
 useEffect(()=>{
     localStorage.setItem("cart",count)
 },[count])

@@ -42,7 +42,6 @@ useEffect(()=>{
     .catch(err =>{
         console.log(err,"error");
     })
-
 },[searchTerm,orderType])
 
 
@@ -57,6 +56,8 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
 const totalBeers = beers.length;
+
+console.log(beers);
 
 return (
     <div className='main'>

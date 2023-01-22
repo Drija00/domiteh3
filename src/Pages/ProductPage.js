@@ -18,6 +18,7 @@ const {id} = useParams();
 const[addToCartBtn,setAddToCartBtn] = useState("Add to cart");
 const [beer,setBeer] = useState({});
 
+
 useEffect(()=>{
 
     getBeerById(id)
