@@ -1,6 +1,7 @@
 import React from 'react'
+import {deleteBeerById} from "../Services/AxiosService";
 
-const Beer = ({beers,navigate,setCount,count,setCartData,cartData}) => {
+const Beer = ({token, beers,navigate,setCount,count,setCartData,cartData, loadBears}) => {
 
 const openBeerPage = (beerId) =>{
     navigate(`/${beerId}`);
@@ -32,9 +33,13 @@ if (isBeerInCart){
     setCount(count+1);
     }
 
+const deleteBeer= (beer)=>{
+    deleteBeerById(beer.id)
+        .then(res => loadBears());
+}
 
 return (
-    beers.map(beer => 
+    beers.map(beer =>
     <div className='beer-card' key={beer.id}>
         <div className='beer-img-box'>
         <img src={beer.image_url} alt="beers" className='beer-img' onClick={()=>openBeerPage(beer.id)}/>
@@ -46,6 +51,7 @@ return (
         </div>
         <div className='button-box'>
         <button className='add-to-cart-btn' onClick={() => {addBeerToCart(beer)}}>Add to cart</button>
+        {token ? <button className='add-to-cart-btn' onClick={() => {deleteBeer(beer)}}>Delete</button> : null}
         </div>
     </div>
     )

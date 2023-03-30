@@ -10,6 +10,7 @@ const Home = () => {
 const context = useContext(Context);
 const searchTerm = context.searchTerm;
 const orderType = context.orderType;
+const token = context.token;
 const count = context.count;
 const setCount = context.setCount;
 const cartData = context.cartData;
@@ -21,27 +22,29 @@ const[beers,setBeers] = useState([]);
 const[currentPage,setCurrentPage] = useState(1);
 const beersPerPage = 8;
 
-useEffect(()=>{
-
+const loadBears= ()=>{
 
     getAllBeers()
-    .then(res => {
-        let beersCopy = [...res.data].map(beer=>{
-        return {...beer,qt:1,totalPrice:beer.abv,buttonLabel:"Add to cart"}
-        })
-        // console.log(res,"response");
-        let filteredData = searchTerm ? beersCopy.filter((beer)=>beer.name.toLowerCase().includes(searchTerm.toLowerCase())): beersCopy;
-        if(orderType==="asc"){
-        filteredData.sort((a,b)=>(a.name > b.name ? 1 : -1));
-        }if(orderType==="dsc"){
-        filteredData.sort((a,b)=>(a.name > b.name ? -1 : 1));
-        }
-        setBeers(filteredData);
-        // console.log(res.data," beers ")
-    })
-    .catch(err =>{
+        .then(res => {
+            let beersCopy = [...res.data].map(beer=>{
+                return {...beer,qt:1,totalPrice:beer.abv,buttonLabel:"Add to cart"}
+            })
+            // console.log(res,"response");
+            let filteredData = searchTerm ? beersCopy.filter((beer)=>beer.name.toLowerCase().includes(searchTerm.toLowerCase())): beersCopy;
+            if(orderType==="asc"){
+                filteredData.sort((a,b)=>(a.name > b.name ? 1 : -1));
+            }if(orderType==="dsc"){
+                filteredData.sort((a,b)=>(a.name > b.name ? -1 : 1));
+            }
+            setBeers(filteredData);
+            // console.log(res.data," beers ")
+        }).catch(err =>{
         console.log(err,"error");
     })
+}
+
+useEffect(()=>{
+    loadBears();
 },[searchTerm,orderType])
 
 
@@ -62,7 +65,7 @@ console.log(beers);
 return (
     <div className='main'>
     <section className='content'>
-        {<Beer cartData={cartData} setCartData={setCartData} count={count} setCount={setCount} beers={currentPost} navigate={navigate}/>}
+        {<Beer token={token} cartData={cartData} setCartData={setCartData} count={count} setCount={setCount} beers={currentPost} navigate={navigate} loadBears={loadBears}/>}
     </section>
     <Context.Provider value={{beers,beersPerPage,totalBeers,paginate}}>
         <Footer/>

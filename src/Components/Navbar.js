@@ -5,7 +5,7 @@ import asc from '../Images/asc.png'
 import dsc from '../Images/dsc.png'
 import Context from './Context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import {faHouse, faUser} from '@fortawesome/free-solid-svg-icons'
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -44,6 +44,7 @@ return (
         <ul>
             <li><Link to='/'><FontAwesomeIcon className='home-icon' icon={faHouse} /></Link></li>
             <li><Link to="/cart"><FontAwesomeIcon className='cart-icon' icon={faCartShopping} /></Link><span className="circle">{count}</span></li>
+            <li><Link to="/login"><FontAwesomeIcon className='user-icon' icon={faUser} /></Link></li>
         </ul>
     </nav>
 )
