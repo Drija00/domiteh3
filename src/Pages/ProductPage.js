@@ -23,7 +23,8 @@ useEffect(()=>{
 
     getBeerById(id)
     .then(res => {
-    let newData = res.data[0];
+    console.log(res.data);
+    let newData = res.data;
     let beersCopy = {...newData,qt:1,totalPrice:newData.abv};
     setBeer(beersCopy);
     })
@@ -39,7 +40,7 @@ const addBeerToCart= ()=>{
     if (isBeerInCart){
         newBeers = cartData.map(el=>{
         if(el.id===beer.id){
-            return {...el,qt:el.qt+1,totalPrice:(el.abv*(el.qt+1)).toFixed(1)};
+            return {...el,qt:el.qt+1,totalPrice:(el.price*(el.qt+1)).toFixed(1)};
         }else{
             return el;
         }
@@ -61,18 +62,18 @@ return (
         <div className='product-page-wrapper'>
             <div className='product-page-container'>
                 <div className='product-page-img'>
-                <img alt='beer' src={beer.image_url}/>
+                <img alt='beer' src={beer.imageUrl}/>
                 </div>
                 <div className='product-page-details'>
                     <div className='details'>
                     <div className='details-header'>
                         <h1>{beer.name}</h1>
-                        <label className='price-label'><span>$</span>{beer.abv}</label>
+                        <label className='price-label'><span>$</span>{beer.price}</label>
                     </div>
                     <hr className='hr'></hr>
                     <p>{beer.description}</p>
                     <p>Food Pairing: </p>
-                    <p>{beer.food_pairing?.map(el=><li className='food-pairing-list' key={el.id}>{el}</li>)}</p>
+                    <p>{beer.foodPairing?.map(el=><li className='food-pairing-list' key={el.id}>{el}</li>)}</p>
                     <hr className='hr'></hr>
                     <div className='product-page-btn-box'>
                         <button onClick={()=>addBeerToCart()}>{addToCartBtn}</button>
