@@ -53,7 +53,10 @@ return (
             <li><Link to='/home'><FontAwesomeIcon className='home-icon' icon={faHouse} /></Link></li>
             <li><Link to="/cart"><FontAwesomeIcon className='cart-icon' icon={faCartShopping} /></Link><span className="circle">{count}</span></li>
             <li><Link to="/login"><FontAwesomeIcon className='user-icon' icon={faUser} /></Link></li>
+<<<<<<< HEAD
             <li><label className='user-label'>{user.firstname}</label></li>
+=======
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
         </ul>
         : ""}
     </nav>

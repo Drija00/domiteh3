@@ -22,8 +22,14 @@ export const deleteBeerById = (id) =>{
 
 
 export const loginUser = (username, password) =>{
+<<<<<<< HEAD
     const params = new URLSearchParams([['email', username],['password', password]]);
     return axios.get(`${baseUrl}/api/v1/auth/user-email-pass`, {params});
+=======
+    // TODO check axios post method how to send data as request body
+    // return axios.post(`${baseUrl}/auth.....`, {username, password});
+    return Promise.resolve({data:{token: "tt"}})
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
 }
 
 // const createBeer = (data) =>{
@@ -31,5 +37,8 @@ export const loginUser = (username, password) =>{
 // }
 
 // export {getAllBeers,getBeerById};
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d

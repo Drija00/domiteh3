@@ -10,7 +10,11 @@ const Home = () => {
 const context = useContext(Context);
 const searchTerm = context.searchTerm;
 const orderType = context.orderType;
+<<<<<<< HEAD
 const user = context.user;
+=======
+const token = context.token;
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
 const count = context.count;
 const setCount = context.setCount;
 const cartData = context.cartData;
@@ -28,7 +32,11 @@ const loadBears= ()=>{
     getAllBeers()
         .then(res => {
             let beersCopy = [...res.data].map(beer=>{
+<<<<<<< HEAD
                 return {...beer,qt:1,totalPrice:beer.price,buttonLabel:"Add to cart"}
+=======
+                return {...beer,qt:1,totalPrice:beer.abv,buttonLabel:"Add to cart"}
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
             })
             // console.log(res,"response");
             let filteredData = searchTerm ? beersCopy.filter((beer)=>beer.name.toLowerCase().includes(searchTerm.toLowerCase())): beersCopy;
@@ -66,7 +74,11 @@ console.log(beers);
 return (
     <div className='main'>
     <section className='content'>
+<<<<<<< HEAD
         {<Beer user={user} cartData={cartData} setCartData={setCartData} count={count} setCount={setCount} beers={currentPost} navigate={navigate} loadBears={loadBears}/>}
+=======
+        {<Beer token={token} cartData={cartData} setCartData={setCartData} count={count} setCount={setCount} beers={currentPost} navigate={navigate} loadBears={loadBears}/>}
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
     </section>
     <Context.Provider value={{beers,beersPerPage,totalBeers,paginate}}>
         <Footer/>

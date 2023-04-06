@@ -1,7 +1,11 @@
 import React from 'react'
 import {deleteBeerById} from "../Services/AxiosService";
 
+<<<<<<< HEAD
 const Beer = ({user, beers,navigate,setCount,count,setCartData,cartData, loadBears}) => {
+=======
+const Beer = ({token, beers,navigate,setCount,count,setCartData,cartData, loadBears}) => {
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
 
 const openBeerPage = (beerId) =>{
     navigate(`/${beerId}`);
@@ -51,7 +55,11 @@ return (
         </div>
         <div className='button-box'>
         <button className='add-to-cart-btn' onClick={() => {addBeerToCart(beer)}}>Add to cart</button>
+<<<<<<< HEAD
         {user.role == 'ADMIN' ? <button className='add-to-cart-btn' onClick={() => {deleteBeer(beer)}}>Delete</button> : null}
+=======
+        {token ? <button className='add-to-cart-btn' onClick={() => {deleteBeer(beer)}}>Delete</button> : null}
+>>>>>>> f90940af3012a974c02f63d51e0a1f6a264bbf7d
         </div>
     </div>
     )
